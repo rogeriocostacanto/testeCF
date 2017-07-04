@@ -20,7 +20,7 @@
             "database"
         ],
         "psr-4": {
-            "CodeFlix\\": "app/"
+            "CodeFlix\\":"app/"
         }
     },
     "autoload-dev": {
