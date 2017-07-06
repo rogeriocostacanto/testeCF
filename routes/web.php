@@ -14,12 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/*
+//registration routes
+$this->get('register','Auth\RegisterController@showRegistrationForm')->name('register');
+$this->post('register','Auth\RegisterController@register')->name('register');*/
 
+//password reset routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')
+    ->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')
+    ->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')
+    ->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@Reset');
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+Route::get('/home','HomeController@index');
 
 Route::group([
     'prefix' => 'admin',
@@ -31,9 +40,9 @@ Route::group([
     Route::post('login', 'Auth\LoginController@Login');
 
     Route::group(['middleware'=>'can:admin'], function(){
-        Route::post('logout', 'Auth\LoginController@Logout')->name('logout');
+        Route::post('logout', 'Auth\LoginController@logout')->name('logout');
         Route::get('dashboard', function(){
-            return "Area administrativa funcionando";
+            return view('admin.dashboard');
         });
     });
 
