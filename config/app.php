@@ -168,14 +168,16 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
         CodeFlix\Providers\AppServiceProvider::class,
         CodeFlix\Providers\AuthServiceProvider::class,
-        // CodeFlix\Providers\BroadcastServiceProvider::class,
+        CodeFlix\Providers\BroadcastServiceProvider::class,
         CodeFlix\Providers\EventServiceProvider::class,
         CodeFlix\Providers\RouteServiceProvider::class,
+        Bootstrapper\BootstrapperL5ServiceProvider::class,
 
     ],
 
@@ -190,7 +192,7 @@ return [
     |
     */
 
-    'aliases' => [
+    'aliases' => array(
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -225,7 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Table' => Bootstrapper\Facades\Table::class,
 
-    ],
+    ),
 
 ];
