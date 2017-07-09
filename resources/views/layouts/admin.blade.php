@@ -69,6 +69,11 @@
                 </div>
             </div>
         </nav>
+        @if(Session::has('message'))
+            <div class="container">
+            {!! Alert::success(Session::get('message'))->close() !!}
+            </div>
+        @endif
 
         @yield('content')
     </div>
