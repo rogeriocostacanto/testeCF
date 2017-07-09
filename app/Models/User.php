@@ -35,6 +35,10 @@ class User extends Authenticatable implements TableInterface
         'password', 'remember_token',
     ];
 
+    public static function generatePassword($password=null){
+        return !$password ? bcrypt(str_random(8)) : bcrypt($password);
+    }
+
     /**
      * A list of headers to be used when a table is displayed
      *
