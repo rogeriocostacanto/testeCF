@@ -49,6 +49,10 @@ class UsersController extends Controller
 
         if (!$form->isValid()){
             //redirecionar para pagina de criaçao de usuários
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         $data= $form->getFieldValues();
