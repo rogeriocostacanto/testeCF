@@ -167,6 +167,9 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Bootstrapper\BootstrapperL5ServiceProvider::class,
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+
 
 
         /*
@@ -177,7 +180,7 @@ return [
         CodeFlix\Providers\BroadcastServiceProvider::class,
         CodeFlix\Providers\EventServiceProvider::class,
         CodeFlix\Providers\RouteServiceProvider::class,
-        Bootstrapper\BootstrapperL5ServiceProvider::class,
+
 
     ],
 
@@ -228,6 +231,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Table' => Bootstrapper\Facades\Table::class,
+        'Icon' => \Bootstrapper\Facades\Icon::class,
+        'FormBuilder' => \Kris\LaravelFormBuilder\Facades\FormBuilder::class,
 
     ),
 
