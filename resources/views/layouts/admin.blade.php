@@ -19,26 +19,32 @@
         use Bootstrapper\Facades\Navigation;$navbar = Navbar::withBrand(config('app.name'), url('/admin/dashboard'))->inverse();
             if (Auth::check()){
                 $arrayLinks = [
-                  ['link' =>route('admin.users.index'), 'title' => 'Usuário'],
-                ];                $menus = Navigation::links($arrayLinks);
-                $logout = Navigation::links([
-                   [
-                    Auth::user()->name,
-                    [
-                       [
-                           'link'=> route('admin.logout'),
-                           'title' => 'Logout',
-                           'linkAttributes' =>[
-                               'onclick'=>"event.preventDefault();document.getElementById(\"form-logout\").submit();"
-                               ]
-                       ],
-                    ]
+                    ['link' =>route('admin.users.index'), 'title' => 'Usuário'],
+                    ['link' =>route('admin.categories.index'), 'title' => 'Categoria']
+                ];
 
-                ]
-              ])->right();
-             $navbar->withContent($menus)->withContent($logout);
-            }
-        ?>
+                $menus = Navigation::links($arrayLinks);
+                $menuRight = Navigation::links([
+                    [
+                        Auth::user()->name,
+                        [
+                            [
+                            'link'=> route('admin.logout'),
+                            'title' => 'Logout',
+                            'linkAttributes' =>[
+                                'onclick'=>"event.preventDefault();document.getElementById(\"form-logout\").submit();"
+                            ]
+                        ],
+                        [
+                            'link' =>route('admin.user_settings.edit'),
+                            'title'=> 'Configurações',
+                        ]
+                    ]
+                   ]
+                ])->right();
+                $navbar->withContent($menus)->withContent($menuRight);
+                }
+                ?>
 
 {!! $navbar !!}
  <?php $formLogout = FormBuilder::plain([

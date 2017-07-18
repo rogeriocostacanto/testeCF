@@ -24,9 +24,15 @@ $factory->define(\CodeFlix\Models\User::class, function (Faker\Generator $faker)
 });
 
 $factory->state(\CodeFlix\Models\User::class, 'admin',function (Faker\Generator $faker) {
-    static $password;
+    //static $password; //no codigo do cara ele tirou???
 
     return [
         'role' => \CodeFlix\Models\User::ROLE_ADMIN
+    ];
+});
+
+$factory->state(\CodeFlix\Models\User::class,'admin', function(Faker\Generator $faker){
+    return [
+        'name' => $faker->word
     ];
 });
